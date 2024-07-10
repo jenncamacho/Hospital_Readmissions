@@ -1,8 +1,7 @@
-# Hospital_Readmissions
-Capstone Project
+# Hospital_Readmissions | Capstone Project
 ## A ML/AI MODEL PREDICTING HOSPITAL READMISSION RATES
 
-# Documents
+## Documents
 Notebook: https://github.com/jenncamacho/Hospital_Readmissions/blob/main/Capstone_Readmissions.ipynb
 Data: https://github.com/jenncamacho/Hospital_Readmissions/blob/main/Patient_informationread_readmit.xls
 
@@ -92,7 +91,7 @@ The goal was to develop the best model to predict whether a client will subscrib
 
 - The negative value means it decreases the log odds of readmission. So being an Inpatient Admission has a strong effect on reducing the likelihood of readmission.
 - The positive values means it increases the log odds of readmission.  The ASA_RATING_C has a strong effect on increasing the likelihood of readmission.
-- 
+  
 ### Recommendations
 
 #### The hospital should consider the following numeric and categorical features which provide the greatest impact to the best model and target patient quality improvement strategies based on these features:
@@ -117,7 +116,7 @@ The goal was to develop the best model to predict whether a client will subscrib
 
 - Model Stability and Generalization:
 - Training Time Consideration:
-- 
+  
 ### Final Recommendation:
 
 Logistic Regression is recommended for its overall balance between accuracy, precision, recall, and training time. K-Nearest Neighbors is also a strong candidate, especially if training time is a critical factor.
@@ -127,7 +126,7 @@ Logistic Regression is recommended for its overall balance between accuracy, pre
 Code Used: Python
 Packages: Pandas, sklearn, numpy, scipy
 Instructions: Please run the notebook in sequence
-<<https://github.com/jenncamacho/Hospital_Readmissions/blob/main/Capstone_Readmissions.ipynb>>
+<< https://github.com/jenncamacho/Hospital_Readmissions/blob/main/Capstone_Readmissions.ipynb >>
 </pre>
 
 ### License
