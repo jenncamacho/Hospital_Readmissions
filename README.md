@@ -17,6 +17,8 @@ The objective is to develop a predictive model that can accurately determine the
 
 ## Data Understanding
 Collect patient data including demographics, vitals, medical history, previous admissions, lab results, medications, and other relevant features.
+UCI MOVER dataset most closely comprises the data features I had outlines in my early proposal and is already de-identified and has been approved for public use.  I chose this dataset over an interal dataset from UCSF.  The UCI dataset compiles hospital data from 58,799 patients across 83,468 surgeries, including medical histories, surgery specifics, and high-fidelity physiological waveforms.
+
 
 #### Dataset Overview
 
@@ -59,21 +61,12 @@ Not Readmitted: The patient will not be readmitted within the specified period.
 ![image](https://github.com/jenncamacho/Hospital_Readmissions/assets/161406309/5555e865-fbff-4217-a876-992193f55281)
 
 
-## Pairplot
-
-
 # List of columns to drop
 FEATURE DESCRIPTION AND RELEVANCE (cont.)
 MRN and LOG_ID are ID numbers do not contribute to model prediction.
 HOSP_ADMSN_TIME, HOSP_DISCH_TIME, IN_OR_DTTM, OUT_OR_DTTM, AN_START_DATETIME, SURGERY_DATE, and AN_STOP_DATETIME provide admission, operating room and anastesia start and stop dates and times. These start dates are often the same, giving little additional insight to predicting a readmission.
 WEIGHT and HEIGHT were used to generate BMI. BMI has more relavance to evaluate patient health.
 These should be removed.
-
-## The Plot demonstrates that the dataset needs to be scaled:
-
-
-
-## This plot shows that the dataset has been successfully scaled:
 
 
 ## Expected techniques:
@@ -99,49 +92,46 @@ The goal was to develop the best model to predict whether a client will subscrib
 - Applying various classification methods to the business problem
 - Comparing the results of k-nearest neighbors, logistic regression, decision trees, and support vector machines
 
+### Logistic Regression
 
+![image](https://github.com/jenncamacho/Hospital_Readmissions/assets/161406309/0fb5704b-8935-4dff-b04c-89c14aaa6a36)
+
+### Interpretation
+
+- The negative value means it decreases the log odds of readmission. So being an Inpatient Admission has a strong effect on reducing the likelihood of readmission.
+- The positive values means it increases the log odds of readmission.  The ASA_RATING_C has a strong effect on increasing the likelihood of readmission.
+- 
 ### Recommendations
 
 #### The hospital should consider the following numeric and categorical features which provide the greatest impact to the best model and target patient quality improvement strategies based on these features:
 
-- age
-- campaign
-- previous
-- emp.var.rate
-- cons.price.idx
-- cons.conf.idx
-- euribor3m
-- nr.employed
+- LOS              
+- BIRTH_DATE
+- ASA_RATING_C
+- PATIENT_CLASS_NM
+- BMI         
 
-#### The best model based on accuracy of the test dataset is Logistic Regression with an accuracy of 87.3%
+#### The best model based on accuracy of the test dataset
+
+| Model              | Training Time (seconds) | Accuracy | Precision | Recall  |
+|--------------------|-------------------------|----------|-----------|---------|
+| LogisticRegression | 0.0190                  | 0.5978   | 0.5496    | 0.5742  |
+| KNearestNeighbors  | 0.0558                  | 0.6655   | 0.4767    | 0.4774  |
+| SVC                | 33.3366                 | 0.7959   | 0.3980    | 0.5000  |
+| DecisionTree       | 0.0780                  | 0.7351   | 0.4603    | 0.4815  |
 
 
-| Model              | Train Time (s) | Train Accuracy | Test Accuracy | Train Precision | Test Precision | Train Recall | Test Recall |
-|--------------------|----------------|----------------|---------------|----------------|---------------|--------------|-------------|
-| LogisticRegression | 0.398813       | 0.871146       | 0.873367      | 0.727586       | 0.714596      | 0.562705     | 0.556600    |
-| KNearestNeighbors  | 0.028972       | 0.892789       | 0.869883      | 0.794366       | 0.697347      | 0.674464     | 0.618765    |
-| SVC                | 3.387884       | 0.866269       | 0.870580      | 0.433134       | 0.435290      | 0.500000     | 0.500000    |
-| DecisionTree       | 0.047040       | 0.952447       | 0.848284      | 0.962203       | 0.642278      | 0.829642     | 0.611516    |
+### Model Performance and Evaluation 
 
-### Model Performance
-Logistic Regression has the highest test accuracy (0.873367) and a balanced precision (0.714596) and recall (0.556600). It performs consistently well on both the training and test sets, indicating a good generalization. K-Nearest Neighbors also shows high test accuracy (0.869883) and relatively balanced precision (0.697347) and recall (0.618765). It has the fastest training time, which might be an advantage if training speed is crucial. SVC has similar test accuracy (0.870580) to Logistic Regression and KNN but shows significantly lower precision and recall. This suggests that while it can separate the classes well, it might not be as reliable for imbalanced classes or more nuanced predictions. Decision Tree has the highest train accuracy (0.952447) but lower test accuracy (0.848284), indicating overfitting. Although it has high precision (0.642278) and recall (0.611516) on the test data, the drop from training performance suggests it may not generalize as well as the other models.
-
-### Model Stability and Generalization:
-Logistic Regression shows stable performance with minimal overfitting, making it a reliable choice. K-Nearest Neighbors also shows minimal overfitting with a slightly lower but still competitive test accuracy. SVC's low precision and recall might make it less desirable unless further tuning or different kernel functions can improve its performance. Decision Tree shows signs of overfitting, indicating it might need pruning, more data, or additional tuning to improve generalization.
-
-### Training Time Consideration:
-K-Nearest Neighbors has the fastest training time, which might be beneficial for very large datasets or when quick retraining is necessary. Logistic Regression has a reasonable training time and good performance, making it a balanced choice. SVC takes significantly longer to train, which might not be ideal for all applications. Decision Tree also has a quick training time but suffers from overfitting.
-
+- Model Stability and Generalization:
+- Training Time Consideration:
+- 
 ### Final Recommendation:
-**Based on the analysis, the best models for predicting whether a client will subscribe to a deposit term are Logistic Regression and K-Nearest Neighbors.**
 
 Logistic Regression is recommended for its overall balance between accuracy, precision, recall, and training time. K-Nearest Neighbors is also a strong candidate, especially if training time is a critical factor.
 
-
-
 ### License
 
-This dataset is licensed under a Creative Commons Attribution 4.0 International (CC BY 4.0) license.
 This allows for the sharing and adaptation of the datasets for any purpose, provided that the appropriate credit is given.
 This project is open source.
 
