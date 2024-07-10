@@ -24,12 +24,19 @@ Data columns: 22 columns
 
 ## Exploratory Data Analysis (EDA) -Exploration:
 ⦁ remove spaces
+
 ⦁ make all lower case
+
 ⦁ remove or solve for missing value
+
 ⦁ Remove redundant features that don't add value to the model or predicting the object
+
 ⦁ numerics and date conversion
+
 ⦁ cardinality for categorical data to see the counts of unique values, drop feature if too much cardinality
+
 ⦁ remove duplicates
+
 ⦁ convert to integer
 
 ### List of columns to drop
@@ -39,17 +46,17 @@ Data columns: 22 columns
 - WEIGHT and HEIGHT were used to generate BMI. BMI has more relavance to evaluate patient health.
 - These should be removed.
 
+  ![image](https://github.com/jenncamacho/Hospital_Readmissions/assets/161406309/5555e865-fbff-4217-a876-992193f55281)
+
 #### Target Variable
 
-- **Output Variable**: `y` - Indicates whether a patient will be readmitted to the hospital following a previous hospital admission.  (binary: "yes:1", "no:0")
+**Output Variable**: `y` - Indicates whether a patient will be readmitted to the hospital following a previous hospital admission.  (binary: "yes:1", "no:0")
 
 #### Expected results:
 The target variable classifies patients into one of two categories:
 
-Readmitted: The patient will be readmitted to the hospital within the specified period.
-Not Readmitted: The patient will not be readmitted within the specified period.
-
-![image](https://github.com/jenncamacho/Hospital_Readmissions/assets/161406309/5555e865-fbff-4217-a876-992193f55281)
+- Readmitted: The patient will be readmitted to the hospital within the specified period.
+- Not Readmitted: The patient will not be readmitted within the specified period.
 
 ## Expected techniques:
 - Data Preprocessing: Handle missing values, encode categorical variables, and normalize/scale numerical features.
