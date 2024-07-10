@@ -4,8 +4,7 @@ Capstone Project
 
 # Documents
 Notebook: https://github.com/jenncamacho/Hospital_Readmissions/blob/main/Capstone_Readmissions.ipynb
-
-bank-additional-full.csv with all examples (41188) and 20 inputs
+Data: https://github.com/jenncamacho/Hospital_Readmissions/blob/main/Patient_informationread_readmit.xls
 
 ## Business Understanding 
 Patient readmission rates are an important indicator used by doctors and hospital administrators to assess the quality of care.
@@ -17,11 +16,12 @@ The objective is to develop a predictive model that can accurately determine the
 
 ## Data Understanding
 Collect patient data including demographics, vitals, medical history, previous admissions, lab results, medications, and other relevant features.
-UCI MOVER dataset most closely comprises the data features I had outlines in my early proposal and is already de-identified and has been approved for public use.  I chose this dataset over an interal dataset from UCSF.  The UCI dataset compiles hospital data from 58,799 patients across 83,468 surgeries, including medical histories, surgery specifics, and high-fidelity physiological waveforms.
-
+UCI MOVER dataset most closely comprises the data features I had outlines in my early proposal and is already de-identified and has been approved for public use.  I chose this dataset over an interal dataset from UCSF.  The UCI dataset compiles hospital data from 58,799 patients across 83,468 surgeries, including medical histories, surgery specifics, and high-fidelity physiological waveforms. 
 
 #### Dataset Overview
 
+Rows:  65728 entries
+Data columns: 22 columns
 
 #### Exploratory Data Analysis (EDA) -Exploration:
 ⦁ remove spaces
@@ -76,14 +76,6 @@ These should be removed.
 - Prediction: Apply the trained model to test patient data to mimic future patient data to predict whether they are likely to be readmitted. ​
 - Model Evaluation: Evaluate the model using appropriate metrics such as accuracy, precision, recall, F1 score.
 
-## Data Processing and Modeling
-<pre>
-Code Used: Python
-Packages: Pandas, sklearn, numpy, scipy
-Instructions: Please run the notebook in sequence
-<<Notebook link>>
-</pre>
-
 ### Train/Test Split
 With your data prepared, split it into a train and test set.
 The goal was to develop the best model to predict whether a client will subscribe a term deposit by: 
@@ -129,6 +121,14 @@ The goal was to develop the best model to predict whether a client will subscrib
 ### Final Recommendation:
 
 Logistic Regression is recommended for its overall balance between accuracy, precision, recall, and training time. K-Nearest Neighbors is also a strong candidate, especially if training time is a critical factor.
+
+## Instructions
+<pre>
+Code Used: Python
+Packages: Pandas, sklearn, numpy, scipy
+Instructions: Please run the notebook in sequence
+<<https://github.com/jenncamacho/Hospital_Readmissions/blob/main/Capstone_Readmissions.ipynb>>
+</pre>
 
 ### License
 
