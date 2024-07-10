@@ -16,39 +16,31 @@ The objective is to develop a predictive model that can accurately determine the
 
 
 ## Data Understanding
-
-
+Collect patient data including demographics, vitals, medical history, previous admissions, lab results, medications, and other relevant features.
 
 #### Dataset Overview
 
 
-
-#### Data Collection and Characteristics
-
-- **READMIT**: The data
-
-- 
-
 #### Exploratory Data Analysis (EDA) -Exploration:
 ⦁ remove spaces
-
 ⦁ make all lower case
-
 ⦁ remove or solve for missing value
-
 ⦁ Remove redundant features that don't add value to the model or predicting the object
-
 ⦁ numerics and date conversion
-
 ⦁ cardinality for categorical data to see the counts of unique values, drop feature if too much cardinality
-
 ⦁ remove duplicates
-
 ⦁ convert to integer
+
+# List of columns to drop
+
+- MRN and LOG_ID are ID numbers do not contribute to model prediction.
+- HOSP_ADMSN_TIME, HOSP_DISCH_TIME, IN_OR_DTTM, OUT_OR_DTTM, AN_START_DATETIME, SURGERY_DATE, and AN_STOP_DATETIME provide admission, operating room and anastesia start and stop dates and times. These start dates are often the same, giving little additional insight to predicting a readmission.
+- WEIGHT and HEIGHT were used to generate BMI. BMI has more relavance to evaluate patient health.
+- These should be removed.
 
 #### Target Variable
 
-- **Output Variable**: `y` - Indicates whether a patient will be readmitted to the hospital following a previous hospital admission.  binary: "yes:1", "no:0").
+- **Output Variable**: `y` - Indicates whether a patient will be readmitted to the hospital following a previous hospital admission.  (binary: "yes:1", "no:0")
 
 #### Expected results:
 The target variable classifies patients into one of two categories:
@@ -56,12 +48,15 @@ The target variable classifies patients into one of two categories:
 Readmitted: The patient will be readmitted to the hospital within the specified period.
 Not Readmitted: The patient will not be readmitted within the specified period.
 
-## Data Preparation and Visulalization
+## Data Preprocessing
 
-
+- one hot encoding
+- target encoding
+- standard scaling
 
 ## Histogram showing distribution of numeric features
 
+![image](https://github.com/jenncamacho/Hospital_Readmissions/assets/161406309/5555e865-fbff-4217-a876-992193f55281)
 
 
 ## Pairplot
