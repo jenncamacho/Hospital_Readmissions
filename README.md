@@ -32,7 +32,7 @@ Data columns: 22 columns
 ⦁ remove duplicates
 ⦁ convert to integer
 
-## List of columns to drop
+### List of columns to drop
 
 - MRN and LOG_ID are ID numbers do not contribute to model prediction.
 - HOSP_ADMSN_TIME, HOSP_DISCH_TIME, IN_OR_DTTM, OUT_OR_DTTM, AN_START_DATETIME, SURGERY_DATE, and AN_STOP_DATETIME provide admission, operating room and anastesia start and stop dates and times. These start dates are often the same, giving little additional insight to predicting a readmission.
@@ -49,16 +49,7 @@ The target variable classifies patients into one of two categories:
 Readmitted: The patient will be readmitted to the hospital within the specified period.
 Not Readmitted: The patient will not be readmitted within the specified period.
 
-## Data Preprocessing
-
-- one hot encoding
-- target encoding
-- standard scaling
-
-## Histogram showing distribution of numeric features
-
 ![image](https://github.com/jenncamacho/Hospital_Readmissions/assets/161406309/5555e865-fbff-4217-a876-992193f55281)
-
 
 ## Expected techniques:
 - Data Preprocessing: Handle missing values, encode categorical variables, and normalize/scale numerical features.
@@ -67,6 +58,12 @@ Not Readmitted: The patient will not be readmitted within the specified period.
 - Prediction: Apply the trained model to test patient data to mimic future patient data to predict whether they are likely to be readmitted. ​
 - Model Evaluation: Evaluate the model using appropriate metrics such as accuracy, precision, recall, F1 score.
 
+### Data Preprocessing
+
+- one hot encoding
+- target encoding
+- standard scaling
+  
 ### Train/Test Split
 With your data prepared, split it into a train and test set.
 The goal was to develop the best model to predict whether a client will subscribe a term deposit by: 
@@ -94,7 +91,7 @@ The goal was to develop the best model to predict whether a client will subscrib
 - PATIENT_CLASS_NM
 - BMI         
 
-## The best model based on accuracy of the test dataset
+### The best model based on accuracy of the test dataset
 
 | Model              | Training Time (seconds) | Accuracy | Precision | Recall  |
 |--------------------|-------------------------|----------|-----------|---------|
@@ -113,7 +110,7 @@ The goal was to develop the best model to predict whether a client will subscrib
 
 Logistic Regression is recommended for its overall balance between accuracy, precision, recall, and training time. K-Nearest Neighbors is also a strong candidate, especially if training time is a critical factor.
 
-## Instructions
+### Instructions
 <pre>
 Code Used: Python
 Packages: Pandas, sklearn, numpy, scipy
