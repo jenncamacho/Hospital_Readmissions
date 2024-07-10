@@ -13,17 +13,16 @@ Gaining better insight and prediction of readmission can be used at time of trea
 ## Problem statement
 The objective is to develop a predictive model that can accurately determine the likelihood of hospital readmission for patients within a specific period following their discharge. By employing classification algorithms—such as Logistic Regression, Decision Trees, Support Vector Machines (SVM), and K-Nearest Neighbors (KNN)—the model will be trained on a labeled dataset. The labels in this dataset categorically indicate whether each patient experienced a readmission post-discharge. This model aims to assist healthcare providers in identifying at-risk patients, thereby enabling timely and targeted interventions to reduce readmission rates.
 
-
 ## Data Understanding
 Collect patient data including demographics, vitals, medical history, previous admissions, lab results, medications, and other relevant features.
 UCI MOVER dataset most closely comprises the data features I had outlines in my early proposal and is already de-identified and has been approved for public use.  I chose this dataset over an interal dataset from UCSF.  The UCI dataset compiles hospital data from 58,799 patients across 83,468 surgeries, including medical histories, surgery specifics, and high-fidelity physiological waveforms. 
 
-#### Dataset Overview
+### Dataset Overview
 
 Rows:  65728 entries
 Data columns: 22 columns
 
-#### Exploratory Data Analysis (EDA) -Exploration:
+## Exploratory Data Analysis (EDA) -Exploration:
 ⦁ remove spaces
 ⦁ make all lower case
 ⦁ remove or solve for missing value
@@ -33,7 +32,7 @@ Data columns: 22 columns
 ⦁ remove duplicates
 ⦁ convert to integer
 
-# List of columns to drop
+## List of columns to drop
 
 - MRN and LOG_ID are ID numbers do not contribute to model prediction.
 - HOSP_ADMSN_TIME, HOSP_DISCH_TIME, IN_OR_DTTM, OUT_OR_DTTM, AN_START_DATETIME, SURGERY_DATE, and AN_STOP_DATETIME provide admission, operating room and anastesia start and stop dates and times. These start dates are often the same, giving little additional insight to predicting a readmission.
@@ -61,14 +60,6 @@ Not Readmitted: The patient will not be readmitted within the specified period.
 ![image](https://github.com/jenncamacho/Hospital_Readmissions/assets/161406309/5555e865-fbff-4217-a876-992193f55281)
 
 
-# List of columns to drop
-FEATURE DESCRIPTION AND RELEVANCE (cont.)
-MRN and LOG_ID are ID numbers do not contribute to model prediction.
-HOSP_ADMSN_TIME, HOSP_DISCH_TIME, IN_OR_DTTM, OUT_OR_DTTM, AN_START_DATETIME, SURGERY_DATE, and AN_STOP_DATETIME provide admission, operating room and anastesia start and stop dates and times. These start dates are often the same, giving little additional insight to predicting a readmission.
-WEIGHT and HEIGHT were used to generate BMI. BMI has more relavance to evaluate patient health.
-These should be removed.
-
-
 ## Expected techniques:
 - Data Preprocessing: Handle missing values, encode categorical variables, and normalize/scale numerical features.
 - Feature Engineering: Create meaningful features from raw data, such as the number of previous admissions, time since last admission, specific lab results, etc.
@@ -84,7 +75,7 @@ The goal was to develop the best model to predict whether a client will subscrib
 - Applying various classification methods to the business problem
 - Comparing the results of k-nearest neighbors, logistic regression, decision trees, and support vector machines
 
-### Logistic Regression
+## Logistic Regression
 
 ![image](https://github.com/jenncamacho/Hospital_Readmissions/assets/161406309/0fb5704b-8935-4dff-b04c-89c14aaa6a36)
 
@@ -103,7 +94,7 @@ The goal was to develop the best model to predict whether a client will subscrib
 - PATIENT_CLASS_NM
 - BMI         
 
-#### The best model based on accuracy of the test dataset
+## The best model based on accuracy of the test dataset
 
 | Model              | Training Time (seconds) | Accuracy | Precision | Recall  |
 |--------------------|-------------------------|----------|-----------|---------|
