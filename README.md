@@ -79,7 +79,7 @@ The goal was to develop the best model to predict whether a client will subscrib
 - Applying various classification methods to the business problem
 - Comparing the results of k-nearest neighbors, logistic regression, decision trees, and support vector machines
 
-## Logistic Regression
+## Logistic Regression 
 
 ![image](https://github.com/jenncamacho/Hospital_Readmissions/assets/161406309/0fb5704b-8935-4dff-b04c-89c14aaa6a36)
 
@@ -98,7 +98,7 @@ The goal was to develop the best model to predict whether a client will subscrib
 - PATIENT_CLASS_NM
 - BMI         
 
-### The best model based on accuracy of the test dataset
+### Model Comparison 
 
 | Model              | Training Time (seconds) | Accuracy | Precision | Recall  |
 |--------------------|-------------------------|----------|-----------|---------|
