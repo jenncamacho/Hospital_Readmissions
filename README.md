@@ -3,7 +3,7 @@ Capstone Project
 ## A ML/AI MODEL PREDICTING HOSPITAL READMISSION RATES
 
 # Documents
-Notebook: https://github.com/jenncamacho/PA3_bank_marketing/blob/main/prompt_III_PREP.ipynb
+Notebook: https://github.com/jenncamacho/Hospital_Readmissions/blob/main/Capstone_Readmissions.ipynb
 
 bank-additional-full.csv with all examples (41188) and 20 inputs
 
