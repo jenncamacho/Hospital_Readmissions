@@ -6,12 +6,36 @@ Notebook: https://github.com/jenncamacho/Hospital_Readmissions/blob/main/Capston
 
 Data: https://github.com/jenncamacho/Hospital_Readmissions/blob/main/Patient_informationread_readmit.xls
 
+# Executive Summary
+
 ## Business Understanding 
 Patient readmission rates are an important indicator used by doctors and hospital administrators to assess the quality of care.
 Gaining better insight and prediction of readmission can be used at time of treatment to make better decisions whether a patient is ready to be released from the hospital and help the medical care providers improve the patient’s treatment plan during their stay.
 
 ## Problem statement
 The objective is to develop a predictive model that can accurately determine the likelihood of hospital readmission for patients within a specific period following their discharge. By employing classification algorithms—such as Logistic Regression, Decision Trees, Support Vector Machines (SVM), and K-Nearest Neighbors (KNN)—the model will be trained on a labeled dataset. The labels in this dataset categorically indicate whether each patient experienced a readmission post-discharge. This model aims to assist healthcare providers in identifying at-risk patients, thereby enabling timely and targeted interventions to reduce readmission rates.
+
+## Findings
+The best model for predicting hospital readmission of patients is the Logistic Regression Model with an accuracy score of 0.8440, precision score of 0.4220, recall score of 0.5000, and low training time of 0.0365 seconds. 
+
+| Model              | Training Time (seconds) | Accuracy | Precision | Recall  |
+|--------------------|-------------------------|----------|-----------|---------|
+| LogisticRegression | 0.0365                  | 0.8440   | 0.4220    | 0.5000  |
+| KNearestNeighbors  | 0.0046                  | 0.8199   | 0.5401    | 0.5131  |
+| SVC                | 21.4163                 | 0.8440   | 0.4220    | 0.5000  |
+| DecisionTree       | 0.0789                  | 0.7440   | 0.5172    | 0.5174  |
+| RandomForest       | 1.8248                  | 0.8049   | 0.5313    | 0.5152  |
+
+The Logistic Regression Model performed better than the KNN, SVC, DecisionTree, and RandomForest models, none of the models generated an impressive recall score: all fell in the 0.500-0.5174 range.  Implications of a recall score close to 0.500:
+
+- Missed Readmissions: The model is missing 50% of the patients who were actually readmitted. These patients are classified as "not readmitted" (False Negatives).
+- Risk of Missing Critical Cases: In a healthcare context, failing to identify patients at risk of readmission could lead to missed opportunities for timely intervention and care.
+- Model Improvement Needed: The model might need improvement, such as using different features, fine-tuning the model parameters, or trying different algorithms that might better capture the patterns related to patient readmission.
+- Recognizing that other contributing factors beyond those captured in the patient record could exist which are not available for use in the model.
+
+## Recommendations
+
+The Logistic Regression Model  
 
 ## Data Understanding
 Collect patient data including demographics, vitals, medical history, previous admissions, lab results, medications, and other relevant features.
@@ -48,6 +72,23 @@ Data columns: 22 columns
 
   ![image](https://github.com/jenncamacho/Hospital_Readmissions/assets/161406309/5555e865-fbff-4217-a876-992193f55281)
 
+# EDA
+
+Pairwise Relationships Between Variables: A pairplot creates scatter plots between each pair of features in the dataset. This helps you visualize how two variables relate to each other, whether there is a linear relationship, a non-linear relationship, or no relationship at all. For example, if you see a linear trend in a scatter plot, it suggests a correlation between the two variables.
+Distribution of Each Variable: Along the diagonal of a pairplot, you typically see the distribution of each variable (often shown as a histogram or kernel density estimate). This helps you understand the distribution of individual features—whether they are normally distributed, skewed, or have outliers. These distributions can inform you about the variability of each feature and whether any preprocessing (like normalization or transformation) might be needed.
+Categorical Separation (using hue): When you use the hue parameter, the pairplot colors the data points based on different categories of a categorical variable. This allows you to observe how different categories are distributed in relation to the features. It can help you identify whether certain categories are clustered together or separated from others, providing insights into how categorical variables interact with the continuous features.
+Identifying Outliers: Outliers can often be spotted in the scatter plots of a pairplot. If you see points that are far removed from the general cluster of data points, these might be outliers. Identifying outliers is important because they can skew the results of statistical analyses and machine learning models.
+Detecting Multicollinearity: Multicollinearity occurs when two or more variables are highly correlated with each other. In a pairplot, this might be indicated by a very strong linear relationship between two variables (i.e., a straight line in a scatter plot). High multicollinearity can be problematic in regression models, so a pairplot can help you detect and address this issue.
+Data Clustering: If your dataset has natural groupings, these may become apparent in the scatter plots of a pairplot. For example, points that cluster together in several pairwise plots may indicate distinct groups or clusters in the data. This insight can be useful for tasks like clustering or classification.
+Comparing Feature Interactions: By examining the plots, you can compare how different features interact with each other. For example, you might observe that certain features interact differently across categories defined by a hue variable. This can help you generate hypotheses about the underlying relationships in your data. Summary: A pairplot provides a compact way to visualize the relationships between pairs of variables, the distribution of individual variables, and the interaction between features and categorical labels. It is a valuable tool for initial exploratory data analysis (EDA), helping you uncover patterns, relationships, and potential issues (like outliers or multicollinearity) in your data.
+
+![image](https://github.com/user-attachments/assets/ad90f83b-0f10-4d7c-95c2-bb9e323023a2)
+
+###Correlation
+
+
+![image](https://github.com/user-attachments/assets/9c0e8c5d-de96-4660-8ae1-c401d4351010)
+
 #### Target Variable
 
 **Output Variable**: `y` - Indicates whether a patient will be readmitted to the hospital following a previous hospital admission.  (binary: "yes:1", "no:0")
@@ -79,14 +120,36 @@ The goal was to develop the best model to predict whether a client will subscrib
 - Applying various classification methods to the business problem
 - Comparing the results of k-nearest neighbors, logistic regression, decision trees, and support vector machines
 
+## Baseline Model Performance to Exceed:
+
+
+| Dummy Classifier          | Accuracy                                   |
+|---------------------------|--------------------------------------------|
+| Train                     | 84.41%                                     |
+| Test                      | 84.40%                                     |
+
+
+
 ## Logistic Regression 
 
 ![image](https://github.com/jenncamacho/Hospital_Readmissions/assets/161406309/0fb5704b-8935-4dff-b04c-89c14aaa6a36)
+
+## Logistic Regression Model Accuracy: 
+
+
+| Logistic Regression         | Accuracy                                   |
+|-----------------------------|--------------------------------------------|
+| Train                       | 84.00%                                     |
 
 ### Interpretation
 
 - The negative value means it decreases the log odds of readmission. So being an Inpatient Admission has a strong effect on reducing the likelihood of readmission.
 - The positive values means it increases the log odds of readmission.  The ASA_RATING_C has a strong effect on increasing the likelihood of readmission.
+
+![image](https://github.com/user-attachments/assets/1c56e163-ef73-471a-832f-33842342775c)
+Interpretation¶
+The negative value means it decreases the log odds of readmission. So being an Inpatient Admission has a strong effect on reducing the likelihood of readmission.
+The positive values means it increases the log odds of readmission. The ASA_RATING_C has a strong effect on increasing the likelihood of readmission.
   
 ### Recommendations
 
@@ -102,10 +165,12 @@ The goal was to develop the best model to predict whether a client will subscrib
 
 | Model              | Training Time (seconds) | Accuracy | Precision | Recall  |
 |--------------------|-------------------------|----------|-----------|---------|
-| LogisticRegression | 0.0190                  | 0.5978   | 0.5496    | 0.5742  |
-| KNearestNeighbors  | 0.0558                  | 0.6655   | 0.4767    | 0.4774  |
-| SVC                | 33.3366                 | 0.7959   | 0.3980    | 0.5000  |
-| DecisionTree       | 0.0780                  | 0.7351   | 0.4603    | 0.4815  |
+| LogisticRegression | 0.0365                  | 0.8440   | 0.4220    | 0.5000  |
+| KNearestNeighbors  | 0.0046                  | 0.8199   | 0.5401    | 0.5131  |
+| SVC                | 21.4163                 | 0.8440   | 0.4220    | 0.5000  |
+| DecisionTree       | 0.0789                  | 0.7440   | 0.5172    | 0.5174  |
+| RandomForest       | 1.8248                  | 0.8049   | 0.5313    | 0.5152  |
+
 
 
 ### Model Performance and Evaluation 
@@ -116,6 +181,8 @@ The goal was to develop the best model to predict whether a client will subscrib
 ### Final Recommendation:
 
 Logistic Regression is recommended for its overall balance between accuracy, precision, recall, and training time. K-Nearest Neighbors is also a strong candidate, especially if training time is a critical factor.
+
+The cost or risk of a false negative is high given that a patient's health and the hospital's liability are at stake.
 
 ### Instructions
 <pre>
