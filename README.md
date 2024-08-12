@@ -35,10 +35,31 @@ The Logistic Regression Model performed better than the KNN, SVC, DecisionTree, 
 
 ## Recommendations
 
-The Logistic Regression Model  
+The Logistic Regression Model is useful to identify features that have the strongest correlation to whether a patient will be readmitted to the hospital.  
 
-## Data Understanding
-Collect patient data including demographics, vitals, medical history, previous admissions, lab results, medications, and other relevant features.
+![image](https://github.com/jenncamacho/Hospital_Readmissions/assets/161406309/0fb5704b-8935-4dff-b04c-89c14aaa6a36)
+
+It is recommended that the hospital administration and health care providers (doctors) give the following greater consideration when making a decision whether to discharge a patient from the hospital:
+
+- Age: The higher the age the more likely to be readmitted
+- ASA Rating: The more critical in nature the procedure, the higher more likely to be readmitted
+- Discharge to Home Healthcare: Patients discharged to home health care are more likely to be readmitted
+- Discharge to Acute Care Facility: Patients discharged to another acute care facility are more likely to not be readmitted
+- Lengh of Stay: the longer the length of stay the more likely to not be readmitted.
+
+Providers and administraters can group like features to apply weights to patient data when making determiniation to discharge a patient.  For example, SEX_Male and SEX_Female are two features that can be grouped together to see that male patients are slightly more likely to be readmitted, while female patients are slightly less likely to be readmitted. Outpatients are more likely to be readmitted than inpatients, suggesting that admitted a patient as an inpatient instead of receiving medical treatment as an outpatient may result in lower readmission rates. 
+
+#### Feature importance. 
+The hospital should consider the following numeric and categorical features which provide the greatest impact to the Logistic Regression model and target patient quality improvement strategies based on these features:
+
+- LOS  (length of stay)            
+- BIRTH_DATE
+- ASA_RATING_C (health of patient prior to precedure)
+- PATIENT_CLASS_NM (inpatient/outpatient)
+- BMI   (body mass index)
+
+### Data Understanding
+Collected patient data includes demographics, vitals, medical history, previous admissions, lab results, medications, and other relevant features.
 UCI MOVER dataset most closely comprises the data features I had outlines in my early proposal and is already de-identified and has been approved for public use.  I chose this dataset over an interal dataset from UCSF.  The UCI dataset compiles hospital data from 58,799 patients across 83,468 surgeries, including medical histories, surgery specifics, and high-fidelity physiological waveforms. 
 
 ### Dataset Overview
@@ -46,29 +67,50 @@ UCI MOVER dataset most closely comprises the data features I had outlines in my 
 Rows:  65728 entries
 Data columns: 22 columns
 
-## Exploratory Data Analysis (EDA) -Exploration:
+#### Patient Record Data and Definitions:
+
+| Column Name           | Description                                                                                          |
+|-----------------------|------------------------------------------------------------------------------------------------------|
+| LOG_ID                | Hospital visit or encounter unique ID                                                                |
+| MRN                   | Medical Record Number or Patient ID                                                                  |
+| DISCH_DISP            | Discharge Disposition or Description                                                                 |
+| HOSP_ADMSN_TIME       | Hospital Admission Time                                                                              |
+| HOSP_DISCH_TIME       | Hospital Discharge Time                                                                              |
+| LOS                   | Length of Stay                                                                                       |
+| ICU_ADMIN_FLAG        | Admitted to ICU flag (true/false)                                                                    |
+| READMIT               | Patient has been readmitted                                                                          |
+| SURGERY_DATE          | Surgery Date                                                                                         |
+| AGE                   | Patient Age                                                                                          |
+| HEIGHT                | Height                                                                                               |
+| WEIGHT                | Weight                                                                                               |
+| SEX                   | Sex                                                                                                  |
+| PRIMARY_ANES_TYPE_NM  | Primary anesthesia type                                                                               |
+| ASA_RATING_C          | American Society of Anesthesiologists (ASA) Code - physical status of patients before surgery        |
+| PATIENT_CLASS_GROUP   | Patient Class Group                                                                                  |
+| PATIENT_CLASS_NM      | Patient Class Name: inpatient, outpatient                                                            |
+| PRIMARY_PROCEDURE_NM  | Primary Procedure Name                                                                               |
+| IN_OR_DTTM            | In Operating Room DateTime                                                                           |
+| OUT_OR_DTTM           | Out of Operating Room DateTime                                                                       |
+| AN_START_DATETIME     | Anesthesia Start DateTime                                                                            |
+| AN_STOP_DATETIME      | Anesthesia Stop DateTime                                                                             |
+
+### Exploratory Data Analysis (EDA) -Exploration:
 ⦁ remove spaces
-
 ⦁ make all lower case
-
 ⦁ remove or solve for missing value
-
 ⦁ Remove redundant features that don't add value to the model or predicting the object
-
-⦁ numerics and date conversion
-
+⦁ numerics conversion
 ⦁ cardinality for categorical data to see the counts of unique values, drop feature if too much cardinality
-
 ⦁ remove duplicates
-
 ⦁ convert to integer
+
 
 ### List of columns to drop
 
 - MRN and LOG_ID are ID numbers do not contribute to model prediction.
-- HOSP_ADMSN_TIME, HOSP_DISCH_TIME, IN_OR_DTTM, OUT_OR_DTTM, AN_START_DATETIME, SURGERY_DATE, and AN_STOP_DATETIME provide admission, operating room and anastesia start and stop dates and times. These start dates are often the same, giving little additional insight to predicting a readmission.
+- HOSP_ADMSN_TIME, HOSP_DISCH_TIME, IN_OR_DTTM, OUT_OR_DTTM, AN_START_DATETIME, SURGERY_DATE, and AN_STOP_DATETIME provide admission, operating room and anastesia start and stop dates and times. These start dates are often the same, giving little additional insight to predicting a readmission- These should be removed.
 - WEIGHT and HEIGHT were used to generate BMI. BMI has more relavance to evaluate patient health.
-- These should be removed.
+  
 
   ![image](https://github.com/jenncamacho/Hospital_Readmissions/assets/161406309/5555e865-fbff-4217-a876-992193f55281)
 
@@ -132,7 +174,6 @@ The goal was to develop the best model to predict whether a client will subscrib
 
 ## Logistic Regression 
 
-![image](https://github.com/jenncamacho/Hospital_Readmissions/assets/161406309/0fb5704b-8935-4dff-b04c-89c14aaa6a36)
 
 ## Logistic Regression Model Accuracy: 
 
@@ -149,17 +190,7 @@ The goal was to develop the best model to predict whether a client will subscrib
 ![image](https://github.com/user-attachments/assets/1c56e163-ef73-471a-832f-33842342775c)
 Interpretation¶
 The negative value means it decreases the log odds of readmission. So being an Inpatient Admission has a strong effect on reducing the likelihood of readmission.
-The positive values means it increases the log odds of readmission. The ASA_RATING_C has a strong effect on increasing the likelihood of readmission.
-  
-### Recommendations
-
-#### The hospital should consider the following numeric and categorical features which provide the greatest impact to the best model and target patient quality improvement strategies based on these features:
-
-- LOS              
-- BIRTH_DATE
-- ASA_RATING_C
-- PATIENT_CLASS_NM
-- BMI         
+The positive values means it increases the log odds of readmission. The ASA_RATING_C has a strong effect on increasing the likelihood of readmission.     
 
 ### Model Comparison 
 
