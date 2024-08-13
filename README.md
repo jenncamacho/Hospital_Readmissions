@@ -34,7 +34,7 @@ The best model for predicting hospital readmission of patients is the Logistic R
 
 The Logistic Regression Model is useful to identify features that have the strongest correlation to whether a patient will be readmitted to the hospital.  
 
-![image](https://github.com/jenncamacho/Hospital_Readmissions/assets/161406309/0fb5704b-8935-4dff-b04c-89c14aaa6a36)
+<img width="539" alt="image" src="https://github.com/user-attachments/assets/6c3b8a10-443c-4a70-9300-86ad74cbcb5e">
 
 It is recommended that the hospital administration and health care providers (doctors) give the following greater consideration when making a decision whether to discharge a patient from the hospital:
 
@@ -49,7 +49,7 @@ Providers and administraters can group like features to apply weights to patient
 ## Further Explanation of the CRISP_DM Framework.  
 The CRISP_DM framework is an iterative and widely adopted approach to data analytics and ML/AI innitiatives which was applied throughout this work.  The framework is comprised of: 
 
-### 1. Business Understanding** (stated above): 
+### 1. Business Understanding (stated above): 
 Patient readmission rates are an important indicator used by doctors and hospital administrators to assess the quality of care.
 Gaining better insight and prediction of readmission can be used at time of treatment to make better decisions whether a patient is ready to be discharged from the hospital. 
 
@@ -126,18 +126,30 @@ Select relevant data and clean it for analysis. Transform and format the data as
 - Prediction: Apply the trained model to test patient data to mimic future patient data to predict whether they are likely to be readmitted. ​
 - Model Evaluation: Evaluate the model using appropriate metrics such as accuracy, precision, recall, F1 score.
 
-![image](https://github.com/user-attachments/assets/ad90f83b-0f10-4d7c-95c2-bb9e323023a2)
-
-####Correlation
-
-![image](https://github.com/user-attachments/assets/9c0e8c5d-de96-4660-8ae1-c401d4351010)
-
-### Data Preprocessing performed: 
+#### Data Preprocessing performed: 
 
 - one hot encoding
 - target encoding
 - standard scaling
   
+![image](https://github.com/user-attachments/assets/ad90f83b-0f10-4d7c-95c2-bb9e323023a2)
+
+#### Correlation Matrix
+Provides insight to features which may be correlated and may supports what we will find in the Logistic Regression model which features show strong correlation to the target variable: readmissions.
+
+- Inpatient/outpatient: Outpatients are more likely to be readmitted
+- ASA Rating: The more critical in nature the procedure, the higher more likely to be readmitted
+- Discharge to Home Healthcare: Patients discharged to home health care are more likely to be readmitted
+- Discharge to Acute Care Facility: Patients discharged to another acute care facility are more likely to not be readmitted
+- Lengh of Stay: the longer the length of stay the more likely to not be readmitted.
+
+![image](https://github.com/user-attachments/assets/9c0e8c5d-de96-4660-8ae1-c401d4351010)
+
+#### Verification that features have been scaled 
+Before generating models, feature values should be scaled to improve model performance and prediction. 
+
+![image](https://github.com/user-attachments/assets/282ccebe-fa1b-4541-bb0c-2e5f5a063b25)
+ 
 ### 4. Modeling:
 
 #### Train/Test Split
@@ -166,7 +178,6 @@ The goal is to develop the best model to predict whether a patient will be readm
 | RandomForest       | 1.8248                  | 0.8049   | 0.5313    | 0.5152  |
 
 ### 5. Evaluation and findings:  
-- Evaluate the models against the business objectives. Review model results and assess if they meet the criteria. Determine the next steps, which may include model refinement or additional data preparation.
 
 #### Findings
 The best model for predicting hospital readmission of patients is the Logistic Regression Model with an accuracy score of 0.8440, precision score of 0.4220, recall score of 0.5000, and low training time of 0.0365 seconds. 
@@ -199,8 +210,6 @@ Providers and administraters can group like features to apply weights to patient
 - The negative value means it decreases the log odds of readmission. So being an Inpatient Admission has a strong effect on reducing the likelihood of readmission.
 - The positive values means it increases the log odds of readmission.  The ASA_RATING_C has a strong effect on increasing the likelihood of readmission.
 
-![image](https://github.com/user-attachments/assets/1c56e163-ef73-471a-832f-33842342775c)
-
 #### Feature importance. 
 The hospital should consider the following numeric and categorical features which provide the greatest impact to the Logistic Regression model and target patient quality improvement strategies based on these features:
 
@@ -216,7 +225,7 @@ Logistic Regression Model should be used to assist healthcare providers in ident
 ### 6. Deployment/Recommendations: 
 - Implement the model in a production environment.
 - Plan and monitor the model's performance over time.
-- Document the process and results for future reference and .
+- Document the process and results for future reference and iteratively make improvements based on the model data.
 
 ## Final Recommendation and Summary:
 
