@@ -30,21 +30,6 @@ The best model for predicting hospital readmission of patients is the Logistic R
 | DecisionTree       | 0.0789                  | 0.7440   | 0.5172    | 0.5174  |
 | RandomForest       | 1.8248                  | 0.8049   | 0.5313    | 0.5152  |
 
-## Recommendations
-
-The Logistic Regression Model is useful to identify features that have the strongest correlation to whether a patient will be readmitted to the hospital.  
-
-<img width="539" alt="image" src="https://github.com/user-attachments/assets/6c3b8a10-443c-4a70-9300-86ad74cbcb5e">
-
-It is recommended that the hospital administration and health care providers (doctors) give the following greater consideration when making a decision whether to discharge a patient from the hospital:
-
-- Age: The higher the age the more likely to be readmitted
-- ASA Rating: The more critical in nature the procedure, the higher more likely to be readmitted
-- Discharge to Home Healthcare: Patients discharged to home health care are more likely to be readmitted
-- Discharge to Acute Care Facility: Patients discharged to another acute care facility are more likely to not be readmitted
-- Lengh of Stay: the longer the length of stay the more likely to not be readmitted.
-
-Providers and administraters can group like features to apply weights to patient data when making determiniation to discharge a patient.  For example, SEX_Male and SEX_Female are two features that can be grouped together to see that male patients are slightly more likely to be readmitted, while female patients are slightly less likely to be readmitted. Outpatients are more likely to be readmitted than inpatients, suggesting that admitted a patient as an inpatient instead of receiving medical treatment as an outpatient may result in lower readmission rates. 
 
 ## Further Explanation of the CRISP_DM Framework.  
 The CRISP_DM framework is an iterative and widely adopted approach to data analytics and ML/AI innitiatives which was applied throughout this work.  The framework is comprised of: 
