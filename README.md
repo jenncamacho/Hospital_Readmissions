@@ -2,8 +2,7 @@
 ## A ML/AI MODEL PREDICTING HOSPITAL READMISSION RATES
 
 ## Documents
-Notebook: https://github.com/jenncamacho/Hospital_Readmissions/blob/main/Capstone_Readmissions.ipynb
-
+Notebook: https://github.com/jenncamacho/Hospital_Readmissions/blob/main/Capstone_Readmissions.ipynb](https://github.com/jenncamacho/Hospital_Readmissions/blob/main/Patient_Readmission_Capstone_Final.ipynb
 Data: https://github.com/jenncamacho/Hospital_Readmissions/blob/main/Patient_informationread_readmit.xls
 
 # Executive Summary
