@@ -49,6 +49,9 @@ It is recommended that the hospital administration and health care providers (do
 
 Providers and administraters can group like features to apply weights to patient data when making determiniation to discharge a patient.  For example, SEX_Male and SEX_Female are two features that can be grouped together to see that male patients are slightly more likely to be readmitted, while female patients are slightly less likely to be readmitted. Outpatients are more likely to be readmitted than inpatients, suggesting that admitted a patient as an inpatient instead of receiving medical treatment as an outpatient may result in lower readmission rates. 
 
+Logistic Regression Model will be  to assist healthcare providers in identifying at-risk patients, thereby enabling timely and targeted interventions to reduce readmission rates.
+
+Expected results:
 #### Feature importance. 
 The hospital should consider the following numeric and categorical features which provide the greatest impact to the Logistic Regression model and target patient quality improvement strategies based on these features:
 
