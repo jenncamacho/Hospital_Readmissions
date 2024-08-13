@@ -2,9 +2,11 @@
 ## A ML/AI MODEL PREDICTING HOSPITAL READMISSION RATES
 
 ## Documents
-Notebook: https://github.com/jenncamacho/Hospital_Readmissions/blob/main/Patient_Readmission_Capstone_Final.ipynb
+Notebook: 
+https://github.com/jenncamacho/Hospital_Readmissions/blob/main/Patient_Readmission_Capstone_Final.ipynb
 
-Data: https://github.com/jenncamacho/Hospital_Readmissions/blob/main/Patient_informationread_readmit.csv
+Data: 
+https://github.com/jenncamacho/Hospital_Readmissions/blob/main/Patient_informationread_readmit.csv
 
 
 # Executive Summary
@@ -50,9 +52,6 @@ It is recommended that the hospital administration and health care providers (do
 
 Providers and administraters can group like features to apply weights to patient data when making determiniation to discharge a patient.  For example, SEX_Male and SEX_Female are two features that can be grouped together to see that male patients are slightly more likely to be readmitted, while female patients are slightly less likely to be readmitted. Outpatients are more likely to be readmitted than inpatients, suggesting that admitted a patient as an inpatient instead of receiving medical treatment as an outpatient may result in lower readmission rates. 
 
-Logistic Regression Model will be  to assist healthcare providers in identifying at-risk patients, thereby enabling timely and targeted interventions to reduce readmission rates.
-
-Expected results:
 #### Feature importance. 
 The hospital should consider the following numeric and categorical features which provide the greatest impact to the Logistic Regression model and target patient quality improvement strategies based on these features:
 
@@ -62,14 +61,22 @@ The hospital should consider the following numeric and categorical features whic
 - PATIENT_CLASS_NM (inpatient/outpatient)
 - BMI   (body mass index)
 
-### Data Understanding
-Collected patient data includes demographics, vitals, medical history, previous admissions, lab results, medications, and other relevant features.
-UCI MOVER dataset most closely comprises the data features I had outlines in my early proposal and is already de-identified and has been approved for public use.  I chose this dataset over an interal dataset from UCSF.  The UCI dataset compiles hospital data from 58,799 patients across 83,468 surgeries, including medical histories, surgery specifics, and high-fidelity physiological waveforms. 
+Logistic Regression Model should be used to assist healthcare providers in identifying at-risk patients, thereby enabling timely and targeted interventions to reduce readmission rates.
 
-### Dataset Overview
+## Further Exploration of the CRISP_DM Framework.  
+The CRISP_DM framework is an iterative and widely adopted approach to data analytics and ML/AI innitiatives comprised of: 
 
-Rows:  65728 entries
-Data columns: 22 columns
+**1. Business Understanding** (stated above): Define the project objectives and requirements from a business perspective.
+Understand the problem to be solved and formulate data mining goals.
+Data Understanding:
+
+**2. Collect initial data and identify data sources**:  Explore the data to understand its characteristics and quality. Identify any data quality issues and gain insights into the data.
+
+Collected patient data including demographics, vitals, medical history, previous admissions, lab results, medications, and other relevant features.
+UCI MOVER dataset most closely comprises the data features I had outlines in my early proposal and is already de-identified and has been approved for public use.  I chose this dataset over an interal dataset from UCSF.  
+- The UCI dataset compiles hospital data from 58,799 patients across 83,468 surgeries, including medical histories, surgery specifics, and high-fidelity physiological waveforms.
+- Rows:  65728 entries
+- Data columns/features: 22 columns
 
 #### Patient Record Data and Definitions:
 
@@ -98,43 +105,6 @@ Data columns: 22 columns
 | AN_START_DATETIME     | Anesthesia Start DateTime                                                                            |
 | AN_STOP_DATETIME      | Anesthesia Stop DateTime                                                                             |
 
-### Exploratory Data Analysis (EDA) -Exploration:
-⦁ remove spaces
-⦁ make all lower case
-⦁ remove or solve for missing value
-⦁ Remove redundant features that don't add value to the model or predicting the object
-⦁ numerics conversion
-⦁ cardinality for categorical data to see the counts of unique values, drop feature if too much cardinality
-⦁ remove duplicates
-⦁ convert to integer
-
-
-### List of columns to drop
-
-- MRN and LOG_ID are ID numbers do not contribute to model prediction.
-- HOSP_ADMSN_TIME, HOSP_DISCH_TIME, IN_OR_DTTM, OUT_OR_DTTM, AN_START_DATETIME, SURGERY_DATE, and AN_STOP_DATETIME provide admission, operating room and anastesia start and stop dates and times. These start dates are often the same, giving little additional insight to predicting a readmission- These should be removed.
-- WEIGHT and HEIGHT were used to generate BMI. BMI has more relavance to evaluate patient health.
-  
-
-  ![image](https://github.com/jenncamacho/Hospital_Readmissions/assets/161406309/5555e865-fbff-4217-a876-992193f55281)
-
-# EDA
-
-Pairwise Relationships Between Variables: A pairplot creates scatter plots between each pair of features in the dataset. This helps you visualize how two variables relate to each other, whether there is a linear relationship, a non-linear relationship, or no relationship at all. For example, if you see a linear trend in a scatter plot, it suggests a correlation between the two variables.
-Distribution of Each Variable: Along the diagonal of a pairplot, you typically see the distribution of each variable (often shown as a histogram or kernel density estimate). This helps you understand the distribution of individual features—whether they are normally distributed, skewed, or have outliers. These distributions can inform you about the variability of each feature and whether any preprocessing (like normalization or transformation) might be needed.
-Categorical Separation (using hue): When you use the hue parameter, the pairplot colors the data points based on different categories of a categorical variable. This allows you to observe how different categories are distributed in relation to the features. It can help you identify whether certain categories are clustered together or separated from others, providing insights into how categorical variables interact with the continuous features.
-Identifying Outliers: Outliers can often be spotted in the scatter plots of a pairplot. If you see points that are far removed from the general cluster of data points, these might be outliers. Identifying outliers is important because they can skew the results of statistical analyses and machine learning models.
-Detecting Multicollinearity: Multicollinearity occurs when two or more variables are highly correlated with each other. In a pairplot, this might be indicated by a very strong linear relationship between two variables (i.e., a straight line in a scatter plot). High multicollinearity can be problematic in regression models, so a pairplot can help you detect and address this issue.
-Data Clustering: If your dataset has natural groupings, these may become apparent in the scatter plots of a pairplot. For example, points that cluster together in several pairwise plots may indicate distinct groups or clusters in the data. This insight can be useful for tasks like clustering or classification.
-Comparing Feature Interactions: By examining the plots, you can compare how different features interact with each other. For example, you might observe that certain features interact differently across categories defined by a hue variable. This can help you generate hypotheses about the underlying relationships in your data. Summary: A pairplot provides a compact way to visualize the relationships between pairs of variables, the distribution of individual variables, and the interaction between features and categorical labels. It is a valuable tool for initial exploratory data analysis (EDA), helping you uncover patterns, relationships, and potential issues (like outliers or multicollinearity) in your data.
-
-![image](https://github.com/user-attachments/assets/ad90f83b-0f10-4d7c-95c2-bb9e323023a2)
-
-###Correlation
-
-
-![image](https://github.com/user-attachments/assets/9c0e8c5d-de96-4660-8ae1-c401d4351010)
-
 #### Target Variable
 
 **Output Variable**: `y` - Indicates whether a patient will be readmitted to the hospital following a previous hospital admission.  (binary: "yes:1", "no:0")
@@ -145,12 +115,41 @@ The target variable classifies patients into one of two categories:
 - Readmitted: The patient will be readmitted to the hospital within the specified period.
 - Not Readmitted: The patient will not be readmitted within the specified period.
 
-## Expected techniques:
+
+**3. Data Preparation:** Select relevant data and clean it for analysis. Transform and format the data as needed for modeling. Create derived attributes and select subsets of data.
+
+#### Exploratory Data Analysis (EDA) -Exploration:
+⦁ remove spaces
+⦁ make all lower case
+⦁ remove or solve for missing value
+⦁ Remove redundant features that don't add value to the model or predicting the object
+⦁ numerics conversion
+⦁ cardinality for categorical data to see the counts of unique values, drop feature if too much cardinality
+⦁ remove duplicates
+⦁ convert to integer
+
+#### List of columns to drop
+
+- MRN and LOG_ID are ID numbers do not contribute to model prediction.
+- HOSP_ADMSN_TIME, HOSP_DISCH_TIME, IN_OR_DTTM, OUT_OR_DTTM, AN_START_DATETIME, SURGERY_DATE, and AN_STOP_DATETIME provide admission, operating room and anastesia start and stop dates and times. These start dates are often the same, giving little additional insight to predicting a readmission- These should be removed.
+- WEIGHT and HEIGHT were used to generate BMI. BMI has more relavance to evaluate patient health.
+  
+
+  ![image](https://github.com/jenncamacho/Hospital_Readmissions/assets/161406309/5555e865-fbff-4217-a876-992193f55281)
+
+#### Expected techniques:
 - Data Preprocessing: Handle missing values, encode categorical variables, and normalize/scale numerical features.
 - Feature Engineering: Create meaningful features from raw data, such as the number of previous admissions, time since last admission, specific lab results, etc.
 - Model Training: Use classification algorithms logistic regression, decision trees, SVM, or KNN to train a model on the labeled dataset where the label indicates whether the patient was readmitted.
 - Prediction: Apply the trained model to test patient data to mimic future patient data to predict whether they are likely to be readmitted. ​
 - Model Evaluation: Evaluate the model using appropriate metrics such as accuracy, precision, recall, F1 score.
+
+![image](https://github.com/user-attachments/assets/ad90f83b-0f10-4d7c-95c2-bb9e323023a2)
+
+####Correlation
+
+
+![image](https://github.com/user-attachments/assets/9c0e8c5d-de96-4660-8ae1-c401d4351010)
 
 ### Data Preprocessing
 
@@ -158,7 +157,9 @@ The target variable classifies patients into one of two categories:
 - target encoding
 - standard scaling
   
-### Train/Test Split
+**4. Modeling:** Select appropriate modeling techniques. Build and test models using the prepared data. Fine-tune model parameters to optimize performance.
+
+#### Train/Test Split
 With your data prepared, split it into a train and test set.
 The goal was to develop the best model to predict whether a client will subscribe a term deposit by: 
 
@@ -166,7 +167,7 @@ The goal was to develop the best model to predict whether a client will subscrib
 - Applying various classification methods to the business problem
 - Comparing the results of k-nearest neighbors, logistic regression, decision trees, and support vector machines
 
-## Baseline Model Performance to Exceed:
+#### Baseline Model Performance to Exceed:
 
 
 | Dummy Classifier          | Accuracy                                   |
@@ -175,28 +176,7 @@ The goal was to develop the best model to predict whether a client will subscrib
 | Test                      | 84.40%                                     |
 
 
-
-## Logistic Regression 
-
-
-## Logistic Regression Model Accuracy: 
-
-
-| Logistic Regression         | Accuracy                                   |
-|-----------------------------|--------------------------------------------|
-| Train                       | 84.00%                                     |
-
-### Interpretation
-
-- The negative value means it decreases the log odds of readmission. So being an Inpatient Admission has a strong effect on reducing the likelihood of readmission.
-- The positive values means it increases the log odds of readmission.  The ASA_RATING_C has a strong effect on increasing the likelihood of readmission.
-
-![image](https://github.com/user-attachments/assets/1c56e163-ef73-471a-832f-33842342775c)
-Interpretation¶
-The negative value means it decreases the log odds of readmission. So being an Inpatient Admission has a strong effect on reducing the likelihood of readmission.
-The positive values means it increases the log odds of readmission. The ASA_RATING_C has a strong effect on increasing the likelihood of readmission.     
-
-### Model Comparison 
+### Model Performances and Evaluation Comparisons to Identify Best Model 
 
 | Model              | Training Time (seconds) | Accuracy | Precision | Recall  |
 |--------------------|-------------------------|----------|-----------|---------|
@@ -206,29 +186,33 @@ The positive values means it increases the log odds of readmission. The ASA_RATI
 | DecisionTree       | 0.0789                  | 0.7440   | 0.5172    | 0.5174  |
 | RandomForest       | 1.8248                  | 0.8049   | 0.5313    | 0.5152  |
 
+**5. Evaluation:**  Evaluate the models against the business objectives. Review model results and assess if they meet the criteria. Determine the next steps, which may include model refinement or additional data preparation.
+
+**6. Deployment/Recommendations:** Implement the model in a production environment. Plan and monitor the model's performance over time. Document the process and results for future reference and .
+
+#### Interpretation
+
+- The negative value means it decreases the log odds of readmission. So being an Inpatient Admission has a strong effect on reducing the likelihood of readmission.
+- The positive values means it increases the log odds of readmission.  The ASA_RATING_C has a strong effect on increasing the likelihood of readmission.
+
+![image](https://github.com/user-attachments/assets/1c56e163-ef73-471a-832f-33842342775c)
 
 
-### Model Performance and Evaluation 
-
-- Model Stability and Generalization:
-- Training Time Consideration:
-  
-### Final Recommendation:
+## Final Recommendation:
 
 Logistic Regression is recommended for its overall balance between accuracy, precision, recall, and training time. K-Nearest Neighbors is also a strong candidate, especially if training time is a critical factor.
-
-The cost or risk of a false negative is high given that a patient's health and the hospital's liability are at stake.
+The cost or risk of a false negative is high given that a patient's health and the hospital's liability are at stake.  With iterative use hospital administration and health care providers can improve the methods of assessing a patients readiness for discharch and better understand the features (factors) which most strongly impact possitive patient outcomes. 
 
 ### Instructions
 <pre>
 Code Used: Python
 Packages: Pandas, sklearn, numpy, scipy
 Instructions: Please run the notebook in sequence
-<< https://github.com/jenncamacho/Hospital_Readmissions/blob/main/Capstone_Readmissions.ipynb >>
+<< https://github.com/jenncamacho/Hospital_Readmissions/blob/main/Patient_Readmission_Capstone_Final.ipynb >>
 </pre>
 
 ### License
 
 This allows for the sharing and adaptation of the datasets for any purpose, provided that the appropriate credit is given.
-This project is open source.
+This project and data is open source.
 
